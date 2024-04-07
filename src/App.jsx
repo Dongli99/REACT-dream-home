@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import { Layout } from "./Layout";
+import { ListStaffs } from "./page/staff/List";
+import { UpdateStaff } from "./page/staff/Update";
+import { HireStaff } from "./page/staff/Hire";
+import { OpenBranch } from "./page/branch/Open";
+import { ListBranches } from "./page/branch/List";
+import { UpdateBranch } from "./page/branch/Update";
+import { SearchBranch } from "./page/branch/Search";
+import { ListClients } from "./page/client/List";
+import { RegisterClient } from "./page/client/Register";
+import { SearchClient } from "./page/client/Search";
+import { HomePage } from "./page/Home";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/staff/all" element={<ListStaffs />} />
+        <Route path="/staff/hire" element={<HireStaff />} />
+        <Route path="/staff/update/:staffNo" element={<UpdateStaff />} />
+        <Route path="/branch/all" element={<ListBranches />} />
+        <Route path="/branch/open" element={<OpenBranch />} />
+        <Route path="/branch/update/:branchNo" element={<UpdateBranch />} />
+        <Route path="/branch/search" element={<SearchBranch />} />
+        <Route path="/client/all" element={<ListClients />} />
+        <Route path="/client/register" element={<RegisterClient />} />
+        <Route path="/client/search" element={<SearchClient />} />
+      </Route>
+    )
+  );
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App">
+        <RouterProvider router={router} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
