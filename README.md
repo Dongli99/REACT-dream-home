@@ -1,12 +1,14 @@
 # Dream Home Front End
 
+> This is a simple frontend for the backend [spring-dream-home](https://github.com/Dongli99/spring-dream-home.git).  
+
 ## Usage
 
 Before you begin, ensure you have met the following requirements:
 
 - Node.js installed on your machine
 - npm or yarn package manager installed
-- Dream Home backend API is running
+- [Dream Home backend API](https://github.com/Dongli99/spring-dream-home.git) is running
 
 ### Installation
 
